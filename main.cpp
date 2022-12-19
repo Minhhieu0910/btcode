@@ -1,44 +1,83 @@
 #include <iostream>
-//Tạo mảng b chỉ chứa giá trị lẻ từ mảng a
+//Tìm dãy con toàn dương có tổng lớn nhất
 using namespace std;
 void nhapmang(int a[],int n)
 {
-    cout<<"nhap gia tri cho cac phan tu trong mang :"<<endl;
+   cout<<"nhap gia tri cua cac phan tu trong mang:"<<endl;
+   for(int i=0;i<n;i++)
+   {
+       cout<<"a["<<i<<"]= "<<endl;
+       cin>>a[i];
+   }
+}
+void xuatmangcon(int a[],int n)
+{
     for(int i=0;i<n;i++)
     {
-        cout<<"a["<<i<<"]="<<endl;
-        cin>>a[i];
-    }
-}
-void xuatmang(int b[],int nb)
-{
-    cout<<"xuat mang b:"<<endl;
-    for(int j=0;j<nb;j++)
-    {
-        cout<<b[j]<<"\t";
-    }
-}
-void taomang(int a[],int n)
-{
-    int b[100];
-    int nb=0;
-    for(int i=0;i<n;i++)
-    {
-        if(a[i]%2!=0)
+        for(int y=1;y<=n;y++)
         {
-            b[nb]=a[i];
-            nb++;
+            for(int j=i;j<y;j++)
+            {
+                cout<<a[j]<<"\t";
+            }
+            cout<<endl;
+        }
+        cout<<endl;
+    }
+}
+int duong(int b[],int n)
+{
+    for(int i=0;i<n;i++)
+    {
+        if(b[i]<0)
+        {
+            return 0;
         }
     }
-    xuatmang(b,nb);
+    return 1;
+}
+int lonnhat(int b[],int n)
+{
+    int m=0;
+    for(int i=0;i<n;i++)
+    {
+        m=m+b[i];
+    }
+      return m;
+}
+void duongtong(int a[],int n)
+{
+    int x=0;
+    int b[100];
+    for (int i=0;i<n;i++)
+    {
+        for(int y=1;y<=n;y++)
+        {
+            int nb=0;
+            for(int j=i;j<y;j++)
+            {
+                b[nb]=a[j];
+                nb++;
+                if(duong(b,nb)==1)
+                {
+                  if(lonnhat(b,nb)>x)
+                  {
+                      x=lonnhat(b,nb);
+                  }
+                }
+            }
+        }
+    }
+    cout<<"day toan duong co gia tri lon nhat bang =  "<<x<<endl;
 }
 int main()
 {
     int a[100];
     int n;
-    cout<<"nhap so luong phan tu trong mang a:"<<endl;
+    cout<<"nhap vao so phan tu trong mang "<<endl;
     cin>>n;
     nhapmang(a,n);
-    taomang(a,n);
+    xuatmangcon(a,n);
+    duongtong(a,n);
     return 0;
 }
