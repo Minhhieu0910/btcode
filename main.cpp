@@ -1,5 +1,5 @@
 #include <iostream>
-//Dịch lên xoay vòng các hàng trong ma trận
+//Hoán vị 2 dòng trên ma trận
 using namespace std;
 #define Max 100
 void nhapmatran(int a[][Max],int row, int col)
@@ -26,23 +26,30 @@ void xuatmatran(int a[][Max],int row,int col)
         cout<<endl;
     }
 }
-void dichlenxoayvong(int a[][Max],int row,int col)
+void hoanvi2dong(int a[][Max],int row,int col,int h, int k)
 {
-        for(int j=0;j<col;j++)
-        {
-            a[row][j]=a[0][j];
-        }
     for(int i=0;i<row;i++)
     {
         for(int j=0;j<col;j++)
         {
-            a[i][j]=a[i+1][j];
+            if(h<k)
+            {
+                if(i==h )
+              {
+                  a[row][j]=a[k][j];
+                  a[k][j]=a[h][j];
+              }
+               if(i==k)
+              {
+                 a[h][j]=a[row][j];
+              }
+            }
         }
     }
 }
 int main()
 {
-   int a[Max][Max];
+    int a[Max][Max];
     int row,col,h,k;
      do
     {
@@ -66,7 +73,11 @@ int main()
 
     nhapmatran(a,row,col);
     xuatmatran(a,row,col);
-    dichlenxoayvong(a,row,col);
+    cout<<"nhap 2 dong hoan vi "<<endl;
+    cin>>h;
+    cout<<endl;
+    cin>>k;
+    hoanvi2dong(a,row,col,h,k);
     xuatmatran(a,row,col);
     return 0;
 }
