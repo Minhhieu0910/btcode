@@ -1,5 +1,5 @@
 #include <iostream>
-//Liệt kê các dòng có nhiều số chẵn nhất
+//Dịch lên xoay vòng các hàng trong ma trận
 using namespace std;
 #define Max 100
 void nhapmatran(int a[][Max],int row, int col)
@@ -26,50 +26,24 @@ void xuatmatran(int a[][Max],int row,int col)
         cout<<endl;
     }
 }
-void sochan(int a[][Max],int row,int col)
+void dichlenxoayvong(int a[][Max],int row,int col)
 {
-    int z=0;
-     int   dem[Max]={0};
+        for(int j=0;j<col;j++)
+        {
+            a[row][j]=a[0][j];
+        }
     for(int i=0;i<row;i++)
     {
         for(int j=0;j<col;j++)
         {
-            if(a[i][j]%2==0)
-            {
-                dem[i]++;
-            }
+            a[i][j]=a[i+1][j];
         }
     }
-    for(int i=0;i<row;i++)
-    {
-        if(dem[i]>z)
-        {
-            z=dem[i];
-        }
-    }
-    if(z==0)
-       {
-          cout<<"khong co so chan trong ma tran";
-       }
-    else
-    {
-        cout<<"nhung dong co so chan nhieu nhat la: ";
-    }
-    for(int i=0;i<row;i++)
-    {
-        if(dem[i]==z)
-        {
-            cout<<i<<"\t";
-        }
-    }
-    cout<<"voi "<<z<<" lan";
-
 }
-
 int main()
 {
-    int a[Max][Max];
-    int row,col;
+   int a[Max][Max];
+    int row,col,h,k;
      do
     {
          cout<<"Nhap vao so cot cua ma tran:"<<endl;
@@ -92,6 +66,7 @@ int main()
 
     nhapmatran(a,row,col);
     xuatmatran(a,row,col);
-    sochan(a,row,col);
+    dichlenxoayvong(a,row,col);
+    xuatmatran(a,row,col);
     return 0;
 }
