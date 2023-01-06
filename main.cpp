@@ -1,40 +1,31 @@
 #include <iostream>
-#include<conio.h>
-// Hãy khai báo kiểu dữ liệu để biểu diễn khái niệm đa thức 1 biến trong toán học:
-// P(x) = a.n.X^n + a.n-1.X^n-1 + … + a.1.X + a.0 và định nghĩa hàm nhập và hàm xuất cho kiểu dữ liệu này
+#include <cstdio>
+// Hãy khai báo kiểu dữ liệu biểu diễn khái niệm điểm trong mặt phẳng Oxy và định nghĩa hàm nhập, hàm xuất cho kiểu dữ liệu này
 using namespace std;
-struct dathuc
+struct diem
 {
-  int n;
-  float a;
+    float x;
+    float y;
 };
-void nhapdathuc(dathuc &dt)
+void nhapdiem(diem &d)
 {
-    cout<<"nhap bac da thuc:"<<endl;
-    cin>>(dt.n);
-    cout<<"nhap he so:"<<endl;
-    cin>>(dt.a);
+    float temp;
+    cout<<"nhap x:"<<endl;
+    cin>>temp;
+    d.x=temp;
+
+    cout<<"nhap y:"<<endl;
+    cin>>temp;
+    d.y=temp;
 }
-void xuatdathuc(dathuc dt)
+void xuatdiem(diem d)
 {
-        for(int i=0;i<=dt.n;i++)
-    {
-        float y=dt.n-i;
-        if(y==0)
-        {
-            cout<<dt.a<<"."<<y<<".X^"<<y;
-        }
-        else
-        {
-            cout<<dt.a<<"."<<y<<".X^"<<y<<"   +    ";
-        }
-    }
+    cout<<d.x<<"  "<<d.y;
 }
 int main()
 {
-
-   dathuc dt;
-   nhapdathuc(dt);
-   xuatdathuc(dt);
+    diem d;
+    nhapdiem(d);
+    xuatdiem(d);
     return 0;
 }
