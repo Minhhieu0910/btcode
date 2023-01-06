@@ -1,44 +1,34 @@
 #include <iostream>
-//Tính tích 2 đơn thức
+//Viết chương trình nhập tọa độ 3 đỉnh của 1 tam giác trong mặt phẳng Oxy.
+// Tính diện tích, chu vi và tọa độ trọng tâm của tam giác và xuất ra kết quả
 using namespace std;
-struct donthuc
+struct diem
 {
-    float a;
-    int n;
+    float x[3];
+    float y[3];
 };
-struct tich2donthuc
+void nhaptoado(diem &d)
 {
-    donthuc dt1;
-    donthuc dt2;
-    float b;
-    int n;
-};
-void nhapdonthuc(donthuc &dt)
-{
-        cout<<"nhap vao co so cua don thuc 1"<<endl;
-        cin>>dt.a;
-        cout<<"nhap vao so mu cua don thuc 2"<<endl;
-        cin>>dt.n;
-        cout<<dt.a<<".X^"<<dt.n<<endl ;
+    for(int i=1;i<4;i++)
+    {
+        cout<<"nhap toa do X dinh "<<i<<" cua tam giac la: ";
+        cin>>d.x[i];
+        cout<<"nhap toa do Y dinh "<<i<<" cua tam giac la: ";
+        cin>>d.y[i];
+        cout<<endl;
+    }
 }
-void tinhtich(tich2donthuc &t)
+void xuattoado(diem d)
 {
-    nhapdonthuc(t.dt1);
-    nhapdonthuc(t.dt2);
-    t.b=t.dt1.a * t.dt2.a;
-    t.n=t.dt1.n + t.dt2.n;
-
-}
-void xuattinhtich(tich2donthuc t)
-{
-    cout<<"tinh 2 don thuc bang: "<<t.b<<".X^"<<t.n;
+    for(int i=1;i<4;i++)
+    {
+        cout<<"("<<d.x[i]<<";"<<d.y[i]<<")";
+    }
 }
 int main()
 {
-    donthuc dt1;
-    donthuc dt2;
-    tich2donthuc t;
-    tinhtich(t);
-    xuattinhtich(t);
+    diem d;
+    nhaptoado(d);
+    xuattoado(d);
     return 0;
 }
