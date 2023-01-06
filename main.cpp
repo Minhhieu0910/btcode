@@ -1,5 +1,5 @@
 #include <iostream>
-// Đếm số lượng cặp giá trị đối xứng nhau wa đường chéo chính
+//Tìm max nguyên tố trong ma trận
 using namespace std;
 #define Max 100
 void nhapmatranvuong(int a[][Max],int n)
@@ -25,18 +25,55 @@ void xuatmatranvuong(int a[][Max],int n)
         cout<<endl;
     }
 }
-void soluongdoixung(int a[][Max],int n)
+void maxnguyento(int a[][Max],int n)
 {
-    int dem =0;
-    for( int i=1;i<n;i++)
+    int temp=0,x=0;
+    for(int i=0;i<n;i++)
     {
-        for(int j=0;j<i;j++)
+        for(int j=0;j<n;j++)
         {
-            if(a[i][j]==a[j][i])
-                dem++;
+            int dem=0;
+            for(int h=1;h<=a[i][j];h++)
+            {
+                if(a[i][j]%h==0)
+                {
+                    dem++;
+                }
+            }
+            if(dem==2)
+            {
+                 x=a[i][j];
+                temp++;
+            }
         }
     }
-    cout<<"so phan tu doi xung qua duong cheo chinh la:"<<dem;
+    for(int i=0;i<n;i++)
+    {
+        for(int j=0;j<n;j++)
+        {
+            int dem=0;
+            for(int h=1;h<=a[i][j];h++)
+            {
+                if(a[i][j]%h==0)
+                {
+                    dem++;
+                }
+
+            }
+            if(dem==2 & a[i][j]>x)
+            {
+                x=a[i][j];
+            }
+        }
+    }
+    if(temp>0)
+    {
+        cout<<"max so nguyen to trong ma tran la:"<<x;
+    }
+    else
+    {
+        cout<<"ma tran khong co so nguyen to";
+    }
 }
 int main()
 {
@@ -46,6 +83,6 @@ int main()
    cin>>n;
    nhapmatranvuong(a,n);
    xuatmatranvuong(a,n);
-   soluongdoixung(a,n);
+   maxnguyento(a,n);
     return 0;
 }
