@@ -1,27 +1,40 @@
 #include <iostream>
-//Khai báo kiểu dữ liệu biểu diễn tọa độ điểm trong không gian Oxyz
+#include <cmath>
+//Tính diện tích đường tròn
 using namespace std;
-struct toadodiem
+struct toadotam
 {
-    float x,y,z;
+    float x,y,r;
 };
-void nhaptoado(toadodiem &td)
+struct duongtron
+{
+    toadotam i;
+    float r;
+};
+void nhapdiem(toadotam &td)
 {
     cout<<"nhap x: "<<endl;
     cin>>td.x;
-    cout<<"nhap y: "<<endl;
+    cout<<"nhap y; "<<endl;
     cin>>td.y;
-    cout<<"nhap z: "<<endl;
-    cin>>td.z;
+    cout<<"nhap vao ban kinh duong tron: "<<endl;
+    cin>>td.r;
 }
-void xuattoado(toadodiem td)
+void xuatduongtron(duongtron &dt)
 {
-    cout<<"Toa do diem trong khong gian oxyz la: ("<<td.x<<";"<<td.y<<";"<<td.z<<")";
+    nhapdiem(dt.i);
+    cout<<"Ta co duong tron tam I("<<dt.i.x<<";"<<dt.i.y<<") va ban kinh r="<<dt.i.r<<endl;
+}
+void tinhdientich(duongtron dt)
+{
+    float s=0;
+    s=2*M_PI*pow(dt.i.r,2);
+    cout<<"dien tich duong tron bang: "<<s;
 }
 int main()
 {
-    toadodiem td;
-    nhaptoado(td);
-    xuattoado(td);
+    duongtron dt;
+    xuatduongtron (dt);
+    tinhdientich(dt);
     return 0;
 }
