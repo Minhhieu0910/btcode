@@ -1,40 +1,76 @@
 #include <iostream>
-//Xuất hình cầu theo định dạng ((x, y, z), r)
+#include <stdio.h>
+#include <conio.h>
+/* Bài 615: Hãy khai báo kiểu dữ liệu để biểu diễn thông tin của một thí sinh (THISINH). Biết rằng một thí sinh gồm những thành phần sau:
+
+Mã thí sinh: chuỗi tối đa 5 ký tự
+Họ tên thí sinh: chuỗi tối đa 30 ký tự
+Điểm toán: kiểu số thực
+Điểm lý: kiểu số thực
+Điểm hóa: kiểu số thực
+Điểm tổng cộng: kiểu số thực
+Sau đó viết hàm nhập, xuất cho kiểu dữ liệu này */
+
 using namespace std;
-struct diem
+struct thisinh
 {
-    float x,y,z;
+    char mathisinh[5];
+    char hotenthisinh[30];
+    float diemtoan,diemly,diemhoa,diemtongcong;
 };
-struct hinhcau
+void nhapthongtin(thisinh &a)
 {
-    diem I;
-    float r;
-};
-void nhapdiem(diem &d)
-{
-    cout<<"nhap x:"<<endl;
-    cin>>d.x;
-    cout<<"nhap y:"<<endl;
-    cin>>d.y;
-    cout<<"nhap z:"<<endl;
-    cin>>d.z;
+    fflush(stdin);
+    cout<<"nhap ma thi sinh: "<<endl;
+    gets(a.mathisinh);
+    fflush(stdin);
+    cout<<"nhap ho ten thi sinh: "<<endl;
+    gets(a.hotenthisinh);
+    do
+    {
+        cout<<"nhap vao diem toan: "<<endl;
+        cin>>a.diemtoan;
+        if(a.diemtoan<0 || a.diemtoan>10)
+        {
+            cout<<"vui long nhap diem lai!"<<endl;
+        }
+    }while (a.diemtoan<0 || a.diemtoan>10);
+    do
+    {
+        cout<<"nhap vao diem ly: "<<endl;
+        cin>>a.diemly;
+        if(a.diemly<0 || a.diemly>10)
+        {
+            cout<<"vui long nhap diem lai!"<<endl;
+        }
+    }while(a.diemly<0 || a.diemly>10);
+    do
+    {
+        cout<<"nhap vao diem hoa: "<<endl;
+        cin>>a.diemhoa;
+        if(a.diemhoa<0 || a.diemhoa>10)
+        {
+            cout<<"vui long nhap diem lai!"<<endl;
+        }
+    }while(a.diemhoa<0 || a.diemhoa>10);
+
+        a.diemtongcong=(a.diemtoan + a.diemhoa + a.diemly)/3;
 }
-void nhaphinhcau(hinhcau &hc)
+void xuatthongtin(thisinh a)
 {
-    nhapdiem(hc.I);
-    cout<<"nhap vao ban kinh hinh cau:"<<endl;
-    cin>>hc.r;
-}
-void xuathinhcau(hinhcau hc)
-{
-cout<<"Ta co toa do hinh cau: (("<<hc.I.x<<" ,"<<hc.I.y<<" ,"<<hc.I.z<<"),"<<hc.r<<")"<<endl;
+    cout<<"Ma thi sinh: "<<a.mathisinh<<endl;
+    cout<<"Ho va ten thi sinh: "<<a.hotenthisinh<<endl;
+    cout<<"Diem toan: "<<a.diemtoan<<endl;
+    cout<<"Diem ly: "<<a.diemly<<endl;
+    cout<<"Diem hoa: "<<a.diemhoa<<endl;
+    cout<<"Diem Tong Cong: "<<a.diemtongcong<<endl;
 }
 int main()
 {
-    diem d;
-    hinhcau hc;
-    nhaphinhcau(hc);
-    xuathinhcau(hc);
 
+   thisinh a;
+   nhapthongtin(a);
+   xuatthongtin(a);
+   getch();
     return 0;
 }
