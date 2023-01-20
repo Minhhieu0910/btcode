@@ -1,8 +1,17 @@
 #include <iostream>
-//Viết hàm khởi tạo danh sách liên kết đơn
+//Hãy khai báo cấu trúc dữ liệu cho danh sách liên kết đơn tổng quát
 using namespace std;
-void init(LIST &l)
+
+struct node
 {
-    l.pHead = NULL;
-    l.pTail = NULL;
-}
+    kieudulieu Info;
+    struct node* pnext;
+};
+typedef struct node NODE;
+
+struct list
+{
+    NODE* pHead;
+    NODE* pTail;
+};
+
