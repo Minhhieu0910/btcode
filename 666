@@ -1,5 +1,5 @@
 #include <iostream>
-// Thêm xóa
+// ThÃªm xÃ³a
 using namespace std;
 #define Max 100
 void capphat(int **&a,int row,int col)
